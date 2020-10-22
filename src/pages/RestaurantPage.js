@@ -1,14 +1,17 @@
 import React from 'react';
 import { View, Image, Text, TouchableOpacity, Dimensions, StyleSheet } from 'react-native';
 
-const RestaurantPage = ({item}) => {
+const RestaurantPage = ({route}) => {
+
+    const {name, image} = route.params;
+
     return (
         <View>
             <Image
                 style = {styles.img}
-                source = {{uri:item.image}}
+                source = {{uri:image}}
             />
-            <Text>{item.name}</Text>
+            <Text>{name}</Text>
         </View>
     )
 }
@@ -17,6 +20,7 @@ export default RestaurantPage;
 
 const styles = StyleSheet.create({
     img:{
-        width:Dimensions.get('window').width / 4
+        width:300,
+        height:300
     }
 })

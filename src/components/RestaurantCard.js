@@ -1,35 +1,39 @@
 import React from 'react';
-import { StyleSheet, View, Image, Text, Dimensions } from 'react-native';
+import { StyleSheet, View, Image, Text, Dimensions, TouchableOpacity } from 'react-native';
 
 
 
-const RestaurantCard = ({restaurant}) => {
+const RestaurantCard = ({ restaurant, onClicked }) => {
     return (
-        <View style = {styles.container}>
-            <Image
-                style = {styles.img}
-                source = {{uri: restaurant.image}}
-            />
-            <Text style = {styles.text}>{restaurant.name}</Text>
-        </View>
+        <TouchableOpacity
+            onPress = {() => onClicked()}
+        >
+            <View style={styles.container}>
+                <Image
+                    style={styles.img}
+                    source={{ uri: restaurant.image }}
+                />
+                <Text style={styles.text}>{restaurant.name}</Text>
+            </View>
+        </TouchableOpacity>
     )
 }
 
 export default RestaurantCard;
 
 const styles = StyleSheet.create({
-    container:{
+    container: {
         backgroundColor: '#F57C00',
         margin: 10,
-        width: Dimensions.get('window').width * 0.9,
+        width: Dimensions.get('window').width * 0.95,
     },
-    img:{
-        width: 350,
-        height:Dimensions.get('window').height / 3,
-        margin:10,
-        resizeMode: 'cover'
+    img: {
+        // width: 370,
+        height: Dimensions.get('window').height / 3,
+        margin: 10,
+        // resizeMode: 'contain'
     },
-    text:{
+    text: {
         color: 'white',
         fontSize: 20
     }

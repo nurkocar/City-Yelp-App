@@ -74,13 +74,15 @@ const cities = [
 
 // navigation={this.props.navigation}
 
-const CityPage = () => {
+const CityPage = ({navigation}) => {
 
-    const renderCities = ({item}) => 
-    
-    <CityCard 
-    city = {item}
-    />
+
+    const renderCities = ({ item }) =>
+
+        <CityCard
+            city={item}
+            onClicked = {() => navigation.navigate('Restaurants')}
+        />
 
     const [inputText, setInputText] = useState('');
 
@@ -89,9 +91,9 @@ const CityPage = () => {
             <View>
                 <Text>Bir sehir seciniz</Text>
                 <TextInput
-                    value = {inputText}
-                    placeholder = 'Bir sehir arayin..'
-                    onChangeText = {(searchText) => setInputText(searchText) }
+                    value={inputText}
+                    placeholder='Bir sehir arayin..'
+                    onChangeText={(searchText) => setInputText(searchText)}
                 />
                 <FlatList
                     data={cities}

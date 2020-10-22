@@ -26,14 +26,16 @@ function Router() {
                 />
 
                 <Stack.Screen
+                    name = 'Restaurants'
+                    component={Restaurants}
+                />
+
+                <Stack.Screen
                     name="RestaurantPage"
                     component={RestaurantPage}
                 />
 
-                <Stack.Screen
-                    name = 'Restaurants'
-                    component={Restaurants}
-                />
+                
                 
             </Stack.Navigator>
         </NavigationContainer>
