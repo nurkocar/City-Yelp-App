@@ -1,5 +1,3 @@
-// In App.js in a new project
-
 import * as React from 'react';
 import { View, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
@@ -17,17 +15,14 @@ function Router() {
         <NavigationContainer>
             <Stack.Navigator
                 screenOptions={{
-                    gestureEnabled: true
+                    gestureEnabled: true,
+                    // headerShown: false
                 }}
             >
                 <Stack.Screen
+                    options = {{title:'CITIES'}}
                     name="CityPage"
                     component={CityPage}
-                />
-
-                <Stack.Screen
-                    name = 'Restaurants'
-                    component={Restaurants}
                 />
 
                 <Stack.Screen
@@ -35,7 +30,10 @@ function Router() {
                     component={RestaurantPage}
                 />
 
-                
+                <Stack.Screen
+                    name = 'Restaurants'
+                    component={Restaurants}
+                />
                 
             </Stack.Navigator>
         </NavigationContainer>
