@@ -1,43 +1,45 @@
-import * as React from 'react';
-import { View, Text } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import React from 'react';
+import {NavigationContainer} from '@react-navigation/native';
+import {createDrawerNavigator} from '@react-navigation/drawer';
+import {createStackNavigator} from '@react-navigation/stack';
 
-import CityPage from './pages/CityPage';
-import Restaurants from './pages/Restaurants';
-import RestaurantPage from './pages/RestaurantPage';
+import {CityList, RestaurantDetail, About, RestaurantList} from './pages';
 
 const Stack = createStackNavigator();
+const Drawer = createDrawerNavigator();
 
+const Home = () => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Cities"
+        component={CityList}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Restaurants"
+        component={RestaurantList}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Details"
+        component={RestaurantDetail}
+        options={{headerShown: false}}
+      />
+    </Stack.Navigator>
+  );
+};
 
-function Router() {
-    return (
-        <NavigationContainer>
-            <Stack.Navigator
-                screenOptions={{
-                    gestureEnabled: true,
-                    // headerShown: false
-                }}
-            >
-                <Stack.Screen
-                    options = {{title:'CITIES'}}
-                    name="CityPage"
-                    component={CityPage}
-                />
-
-                <Stack.Screen
-                    name="RestaurantPage"
-                    component={RestaurantPage}
-                />
-
-                <Stack.Screen
-                    name = 'Restaurants'
-                    component={Restaurants}
-                />
-                
-            </Stack.Navigator>
-        </NavigationContainer>
-    );
-}
+const Router = () => {
+  return (
+    <NavigationContainer>
+      <Drawer.Navigator>
+        <Drawer.Screen name="Home" component={Home} />
+        <Drawer.Screen name="About" component={About} />
+      </Drawer.Navigator>
+    </NavigationContainer>
+  );
+};
 
 export default Router;
+
